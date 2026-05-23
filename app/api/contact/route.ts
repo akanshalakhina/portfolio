@@ -1,6 +1,4 @@
 import { NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
 
 export async function POST(req: Request) {
   try {
@@ -16,25 +14,23 @@ export async function POST(req: Request) {
     const timestamp = new Date().toISOString();
     const submission = { name, email, message, timestamp };
 
-    // 1. Save submission locally for local review & history
-    const filePath = path.join(process.cwd(), "contact_submissions.json");
-    let submissions = [];
+    // 1. Save submission locally for local review & history (ONLY in development)
+    if (process.env.NODE_ENV === "development") {
+      try {
+        const fs = await import("fs");
+        const path = await import("path");
+        const filePath = path.join(process.cwd(), "contact_submissions.json");
+        let submissions = [];
 
-    try {
-      if (fs.existsSync(filePath)) {
-        const fileContent = fs.readFileSync(filePath, "utf-8");
-        submissions = JSON.parse(fileContent);
+        if (fs.existsSync(filePath)) {
+          const fileContent = fs.readFileSync(filePath, "utf-8");
+          submissions = JSON.parse(fileContent);
+        }
+        submissions.push(submission);
+        fs.writeFileSync(filePath, JSON.stringify(submissions, null, 2), "utf-8");
+      } catch (e) {
+        console.error("Error writing contact_submissions.json in development:", e);
       }
-    } catch (e) {
-      console.error("Error reading contact_submissions.json:", e);
-    }
-
-    submissions.push(submission);
-
-    try {
-      fs.writeFileSync(filePath, JSON.stringify(submissions, null, 2), "utf-8");
-    } catch (e) {
-      console.error("Error writing contact_submissions.json:", e);
     }
 
     // 2. Forward via Web3Forms API using the user provided Access Key
