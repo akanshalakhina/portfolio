@@ -8,11 +8,17 @@ export async function GET() {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 3000);
 
+    const headers: Record<string, string> = {
+      "User-Agent": "nextjs-portfolio-fetcher",
+    };
+
+    if (process.env.GITHUB_PAT) {
+      headers["Authorization"] = `token ${process.env.GITHUB_PAT}`;
+    }
+
     const res = await fetch("https://api.github.com/users/akanshalakhina/repos?sort=updated&per_page=100", {
       signal: controller.signal,
-      headers: {
-        "User-Agent": "nextjs-portfolio-fetcher",
-      },
+      headers: headers,
       next: { revalidate: 3600 }, // Cache response for 1 hour
     });
     

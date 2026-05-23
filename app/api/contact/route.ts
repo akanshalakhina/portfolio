@@ -45,7 +45,7 @@ export async function POST(req: Request) {
         "Accept": "application/json"
       },
       body: JSON.stringify({
-        access_key: "517baaf5-6b9d-4810-9de8-76db574f64d8",
+        access_key: process.env.WEB3FORMS_ACCESS_KEY || "517baaf5-6b9d-4810-9de8-76db574f64d8",
         name: name,
         email: email,
         message: message,
