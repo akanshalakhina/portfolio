@@ -1,0 +1,53 @@
+--- PAGE 1 ---
+AKANSHA
++91 8882609127 | akanshalakhina23@gmail.com | LinkedIn | GitHub | LeetCode
+EDUCATION
+Dr Akhilesh Das Gupta Institute Of Professional Studies Aug 2023–Expected 2027
+B-Tech in Computer Science and Technology CGPA:9.5
+EXPERIENCE
+United Business Solution July 2025 – Aug 2025
+Web Development Intern Gurgaon, India
+• Worked on responsive web development tasks using modern frontend technologies and reusable UI components.
+• Assisted in UI enhancement, bug fixing, and improving website responsiveness for better user experience.
+• Gained hands-on exposure to HTML, CSS, JavaScript, React.js, and real-world development workflows.
+• Collaborated with team members on feature implementation while strengthening problem-solving and teamwork
+skills.
+TechVision Digital May 2026 – Present
+Full Stack Development Intern (Remote) Remote
+• Developing and maintaining WordPress websites using HTML, CSS, JavaScript, and PHP .
+• Customizing themes/plugins and deploying websites on Hostinger and VPS servers.
+• Optimizing websites for SEO, speed, performance, and user experience .
+PROJECTS
+AI Career Coach — SensAI Link May 2025 – June 2025
+• Engineered a full-stack AI-powered career platform using React and Next.js, delivering real-time resume reviews
+and interview insights.
+• Integrated Google Gemini API for context-aware, role-specific recommendations.
+• Designed scalable backend using Prisma ORM and PostgreSQL (NeonDB) for efficient data handling.
+StayHub — Travel Accommodation Platform Link March 2025 – June 2025
+• Developed a full-stack travel accommodation platform enabling end-to-end booking workflows and enhanced user
+interaction.
+• Architected a scalable backend using Node.js and Express.js, optimizing API performance and request handling.
+• Designed robust data models using MongoDB (Mongoose) ensuring efficient schema design and data consistency.
+VibeMate — AI Roommate Matching System (Top 5 Hackathon Finalist) Code Oct 2025 – Nov 2025
+• Designed and implemented a weight-based matching algorithm to evaluate user compatibility and generate
+personalized roommate recommendations.
+• Built backend logic to compute compatibility scores and generate personalized roommate recommendations .
+• Integrated Omnidimension API for voice-based data collection, enabling interactive user profiling.
+Technical Skills
+• Languages: Java, Python, JavaScript, HTML, CSS
+• Frontend: React, Next.js, Bootstrap
+• Backend: Node.js, Express.js
+• Databases: MongoDB, PostgreSQL
+• Tools: Git, GitHub, Vercel
+• CS Fundamentals: Data Structures and Algorithms, OOP, Computer Networks, Operating System
+--- PAGE 2 ---
+Achievements & Certifications
+∗ Amazon Future Engineer (AFE) Scholar — Selected among 40,000+ applicants for a competitive
+scholarship program supporting women in tech; completed a 10-month intensive program in Java and Data
+Structures & Algorithms. Certificate
+∗ Top 10 Finalist — GDG Solution Challenge — Recognized for building an AI-based solution
+addressing real-world problems as part of Google Developer Groups initiative. Certificate
+∗ Generative AI with AWS (Udacity) — Gained hands-on experience with AWS Bedrock, SageMaker,
+and deployment of AI-driven applications. Certificate
+∗ Aspire Leaders Program (Aspire Institute, Harvard-backed) — Completed leadership program focused
+on problem-solving, communication, and global leadership . Certificate

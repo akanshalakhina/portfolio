@@ -1,0 +1,352 @@
+[
+  {
+    "name": "portfolio",
+    "description": "Premium recruiter-focused personal portfolio website built with Next.js 14, TypeScript, Tailwind, and Three.js.",
+    "html_url": "https://github.com/akanshalakhina/portfolio",
+    "homepage": "https://github.com/akanshalakhina/portfolio",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "TypeScript",
+    "topics": []
+  },
+  {
+    "name": "BookmyPackers",
+    "description": "A modern relocation booking portal with dynamic pricing calculation, address matching, and historical booking archives.",
+    "html_url": "https://github.com/akanshalakhina/BookmyPackers",
+    "homepage": "https://bookmy-packers.vercel.app",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "TypeScript",
+    "topics": []
+  },
+  {
+    "name": "PrimeTradeAI_Py-main",
+    "description": "A developer repository by Akansha Lakhina.",
+    "html_url": "https://github.com/akanshalakhina/PrimeTradeAI_Py-main",
+    "homepage": null,
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "Python",
+    "topics": []
+  },
+  {
+    "name": "serviceHire",
+    "description": "Local service booking marketplace connecting clients with service providers with custom scheduling.",
+    "html_url": "https://github.com/akanshalakhina/serviceHire",
+    "homepage": "https://service-hive-seven.vercel.app",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "TypeScript",
+    "topics": []
+  },
+  {
+    "name": "ReducateAI",
+    "description": "AI-powered personalized student learning platform constructing interactive quizzes and study roadmaps.",
+    "html_url": "https://github.com/akanshalakhina/ReducateAI",
+    "homepage": "https://reducate-ai-one.vercel.app",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "TypeScript",
+    "topics": []
+  },
+  {
+    "name": "Swipe_Clone-main",
+    "description": "A pixel-perfect responsive clone of the Swipe platform landing page, showcasing advanced CSS and animations.",
+    "html_url": "https://github.com/akanshalakhina/Swipe_Clone-main",
+    "homepage": "https://swipe-clone-main.vercel.app/",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "JavaScript",
+    "topics": []
+  },
+  {
+    "name": "InfoTechServices",
+    "description": "A developer repository by Akansha Lakhina.",
+    "html_url": "https://github.com/akanshalakhina/InfoTechServices",
+    "homepage": null,
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "CSS",
+    "topics": []
+  },
+  {
+    "name": "novastore-ecommerce",
+    "description": "Sleek e-commerce shopping experience with product catalog filters and responsive checkouts.",
+    "html_url": "https://github.com/akanshalakhina/novastore-ecommerce",
+    "homepage": "https://github.com/akanshalakhina/novastore-ecommerce",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "JavaScript",
+    "topics": []
+  },
+  {
+    "name": "StayHub-Travel-accomodation-Platform",
+    "description": "Full-stack travel booking and guest accommodation platform built with Node.js, Express, and MongoDB.",
+    "html_url": "https://github.com/akanshalakhina/StayHub-Travel-accomodation-Platform",
+    "homepage": "https://stayhub-travel-accomodation-platform.vercel.app",
+    "stargazers_count": 1,
+    "forks_count": 0,
+    "language": "JavaScript",
+    "topics": []
+  },
+  {
+    "name": "VeriRide-Smart-Vehicle-Booking-Platform",
+    "description": "VeriRide is a secure vehicle booking platform that enables real-time ride tracking and user verification through integrated video KYC. It provides a seamless and safe booking experience using modern full-stack technologies.",
+    "html_url": "https://github.com/akanshalakhina/VeriRide-Smart-Vehicle-Booking-Platform",
+    "homepage": null,
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "TypeScript",
+    "topics": []
+  },
+  {
+    "name": "AccredianAssignment",
+    "description": "Accredian referral portal assignment with backend email notifications and validation forms.",
+    "html_url": "https://github.com/akanshalakhina/AccredianAssignment",
+    "homepage": "https://accredian-assignment-dusky.vercel.app",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "TypeScript",
+    "topics": []
+  },
+  {
+    "name": "accredian-clone",
+    "description": "A developer repository by Akansha Lakhina.",
+    "html_url": "https://github.com/akanshalakhina/accredian-clone",
+    "homepage": "https://accredian-clone-lime.vercel.app",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "TypeScript",
+    "topics": []
+  },
+  {
+    "name": "InternshipAssignment",
+    "description": "A developer repository by Akansha Lakhina.",
+    "html_url": "https://github.com/akanshalakhina/InternshipAssignment",
+    "homepage": null,
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "TypeScript",
+    "topics": []
+  },
+  {
+    "name": "gstack",
+    "description": "Use Garry Tan's exact Claude Code setup: 23 opinionated tools that serve as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA",
+    "html_url": "https://github.com/akanshalakhina/gstack",
+    "homepage": "",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": null,
+    "topics": []
+  },
+  {
+    "name": "Primetrade-Assignment",
+    "description": "A developer repository by Akansha Lakhina.",
+    "html_url": "https://github.com/akanshalakhina/Primetrade-Assignment",
+    "homepage": null,
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "JavaScript",
+    "topics": []
+  },
+  {
+    "name": "primetradeassignment",
+    "description": "A developer repository by Akansha Lakhina.",
+    "html_url": "https://github.com/akanshalakhina/primetradeassignment",
+    "homepage": "https://primetradeassignment-peach.vercel.app",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "JavaScript",
+    "topics": []
+  },
+  {
+    "name": "Backend-Assignment",
+    "description": "A developer repository by Akansha Lakhina.",
+    "html_url": "https://github.com/akanshalakhina/Backend-Assignment",
+    "homepage": null,
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "JavaScript",
+    "topics": []
+  },
+  {
+    "name": "SENSAI",
+    "description": "AI-powered career coaching and resume screening platform using Google Gemini API, Prisma, and Next.js.",
+    "html_url": "https://github.com/akanshalakhina/SENSAI",
+    "homepage": "https://sensai-dun.vercel.app",
+    "stargazers_count": 1,
+    "forks_count": 0,
+    "language": "JavaScript",
+    "topics": []
+  },
+  {
+    "name": "Aethoria-The-Fictional-World",
+    "description": "Immersive storytelling and lore exploration web page with customized animations and layouts.",
+    "html_url": "https://github.com/akanshalakhina/Aethoria-The-Fictional-World",
+    "homepage": "https://aethoria-the-fictional-world.vercel.app",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "HTML",
+    "topics": []
+  },
+  {
+    "name": "interview-company-wise-problems",
+    "description": "Lists of company wise questions. Every csv file in the companies directory corresponds to a list of questions on leetcode for a specific company based on the leetcode company tags. Updated as of 20 June, 2025",
+    "html_url": "https://github.com/akanshalakhina/interview-company-wise-problems",
+    "homepage": "",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": null,
+    "topics": []
+  },
+  {
+    "name": "samarthbharat-mvp",
+    "description": "A developer repository by Akansha Lakhina.",
+    "html_url": "https://github.com/akanshalakhina/samarthbharat-mvp",
+    "homepage": null,
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": null,
+    "topics": []
+  },
+  {
+    "name": "WEBGEN",
+    "description": "WEBGEN is a full-stack SaaS platform that allows users to generate production-ready websites using AI and deploy them instantly with a single click. Built using the MERN stack with Stripe integration for subscription-based access, the platform automates code generation, project structuring, and deployment workflows.",
+    "html_url": "https://github.com/akanshalakhina/WEBGEN",
+    "homepage": null,
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "JavaScript",
+    "topics": []
+  },
+  {
+    "name": "500-AI-Agents-Projects",
+    "description": "The 500 AI Agents Projects is a curated collection of AI agent use cases across various industries. It showcases practical applications and provides links to open-source projects for implementation, illustrating how AI agents are transforming sectors such as healthcare, finance, education, retail, and more.",
+    "html_url": "https://github.com/akanshalakhina/500-AI-Agents-Projects",
+    "homepage": "https://github.com/ashishpatel26/500-AI-Agents-Projects",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": null,
+    "topics": []
+  },
+  {
+    "name": "akanshalakhina",
+    "description": "A developer repository by Akansha Lakhina.",
+    "html_url": "https://github.com/akanshalakhina/akanshalakhina",
+    "homepage": null,
+    "stargazers_count": 1,
+    "forks_count": 0,
+    "language": null,
+    "topics": []
+  },
+  {
+    "name": "HTML-CSS-Assignments",
+    "description": "Assignment of cohort4",
+    "html_url": "https://github.com/akanshalakhina/HTML-CSS-Assignments",
+    "homepage": null,
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": null,
+    "topics": []
+  },
+  {
+    "name": "AGRI-GUARD",
+    "description": "A developer repository by Akansha Lakhina.",
+    "html_url": "https://github.com/akanshalakhina/AGRI-GUARD",
+    "homepage": null,
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "Python",
+    "topics": []
+  },
+  {
+    "name": "Face-Detection-Attendance-App-",
+    "description": "Real-time face recognition attendance logging system built using Python, OpenCV, and Haar Cascade.",
+    "html_url": "https://github.com/akanshalakhina/Face-Detection-Attendance-App-",
+    "homepage": "https://github.com/akanshalakhina/Face-Detection-Attendance-App-",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "Python",
+    "topics": []
+  },
+  {
+    "name": "SMS-SPAM-DETECTION-APP",
+    "description": "Machine learning-based SMS spam classifier built with Python and deployed using Streamlit.",
+    "html_url": "https://github.com/akanshalakhina/SMS-SPAM-DETECTION-APP",
+    "homepage": "https://github.com/akanshalakhina/SMS-SPAM-DETECTION-APP",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "Jupyter Notebook",
+    "topics": []
+  },
+  {
+    "name": "Fraud-Detection-App",
+    "description": "Machine learning web application for detecting fraudulent financial transactions.",
+    "html_url": "https://github.com/akanshalakhina/Fraud-Detection-App",
+    "homepage": "https://github.com/akanshalakhina/Fraud-Detection-App",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "Jupyter Notebook",
+    "topics": []
+  },
+  {
+    "name": "VIBE-MATE",
+    "description": "A developer repository by Akansha Lakhina.",
+    "html_url": "https://github.com/akanshalakhina/VIBE-MATE",
+    "homepage": null,
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": null,
+    "topics": []
+  },
+  {
+    "name": "vibey_matey",
+    "description": "A developer repository by Akansha Lakhina.",
+    "html_url": "https://github.com/akanshalakhina/vibey_matey",
+    "homepage": null,
+    "stargazers_count": 0,
+    "forks_count": 1,
+    "language": "TypeScript",
+    "topics": []
+  },
+  {
+    "name": "VibeMate",
+    "description": "Top 5 Hackathon Finalist. Voice-based roommate matching system using a weight-based compatibility matching algorithm.",
+    "html_url": "https://github.com/akanshalakhina/VibeMate",
+    "homepage": "https://github.com/akanshalakhina/VibeMate",
+    "stargazers_count": 0,
+    "forks_count": 0,
+    "language": "TypeScript",
+    "topics": []
+  },
+  {
+    "name": "DEMO",
+    "description": "This is my first Git Repository",
+    "html_url": "https://github.com/akanshalakhina/DEMO",
+    "homepage": null,
+    "stargazers_count": 2,
+    "forks_count": 0,
+    "language": null,
+    "topics": []
+  },
+  {
+    "name": "shifra-voice-assistant",
+    "description": "A developer repository by Akansha Lakhina.",
+    "html_url": "https://github.com/akanshalakhina/shifra-voice-assistant",
+    "homepage": null,
+    "stargazers_count": 1,
+    "forks_count": 0,
+    "language": "JavaScript",
+    "topics": []
+  },
+  {
+    "name": "Titanic-EDA",
+    "description": "A developer repository by Akansha Lakhina.",
+    "html_url": "https://github.com/akanshalakhina/Titanic-EDA",
+    "homepage": null,
+    "stargazers_count": 1,
+    "forks_count": 0,
+    "language": "Jupyter Notebook",
+    "topics": []
+  }
+]
