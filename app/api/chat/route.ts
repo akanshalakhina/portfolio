@@ -1,85 +1,78 @@
 import { NextResponse } from "next/server";
 
+import { SYSTEM_PROMPT } from "@/lib/twin";
+
+type Turn = { role: "user" | "ai"; text: string };
+
+// Best-effort per-instance rate limit: 20 questions per IP per 10 minutes.
+const WINDOW_MS = 10 * 60 * 1000;
+const LIMIT = 20;
+const hits = new Map<string, number[]>();
+
+function limited(ip: string) {
+  const now = Date.now();
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < WINDOW_MS);
+  recent.push(now);
+  hits.set(ip, recent);
+  return recent.length > LIMIT;
+}
+
 export async function POST(req: Request) {
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    // 501 tells the client to answer from its offline knowledge base instead.
+    return NextResponse.json({ error: "No model configured." }, { status: 501 });
+  }
+
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "local";
+  if (limited(ip)) {
+    return NextResponse.json({ error: "Too many questions — try again in a few minutes." }, { status: 429 });
+  }
+
+  let body: { message?: unknown; history?: unknown };
   try {
-    const { message } = await req.json();
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "Invalid JSON." }, { status: 400 });
+  }
 
-    if (!message) {
-      return NextResponse.json({ error: "Message is required" }, { status: 400 });
-    }
+  const message = typeof body.message === "string" ? body.message.trim().slice(0, 500) : "";
+  if (!message) return NextResponse.json({ error: "Message is required." }, { status: 400 });
 
-    const apiKey = process.env.GEMINI_API_KEY;
-    if (!apiKey) {
-      // Return 501 Not Implemented to signal client to use the local expert fallback
-      return NextResponse.json(
-        { error: "Gemini API key not configured. Using client fallback." },
-        { status: 501 }
-      );
-    }
+  const history: Turn[] = Array.isArray(body.history)
+    ? (body.history as Turn[])
+        .filter((t) => t && (t.role === "user" || t.role === "ai") && typeof t.text === "string")
+        .slice(-6)
+        .map((t) => ({ role: t.role, text: t.text.slice(0, 800) }))
+    : [];
 
-    // System prompt feeding Akansha Lakhina's resume context
-    const systemInstruction = `
-      You are Akansha Lakhina's AI Career Assistant. Your job is to answer questions from recruiters and developers about Akansha Lakhina.
-      Be professional, positive, concise, and focused on her technical expertise.
-      
-      About Akansha Lakhina:
-      - Career Goals: AI & Full Stack Software Engineering Intern candidate for Summer/Fall 2027.
-      - Education & Fellowship: Amazon Future Engineer (AFE) Scholar (fellowship supporting women in tech, selected from 40k+ applicants). Finished 10-month Java & DSA roadmap. GDG Solution Challenge Finalist. Aspire Leaders Program Alumna.
-      - Core Stack: MERN stack (MongoDB, Express, React, Node.js), Next.js, FastAPI, PostgreSQL (Prisma, Neon), Java, Python, DSA, WebRTC.
-      - Experience:
-        1. Full Stack Development Intern at TechVision Digital (May 2026 - Present): Web development, plugin customization, server deployment, SEO optimization.
-        2. Web Development Intern at United Business Solution (July 2025 - Aug 2025): Responsive frontends in React, state management, render optimizations.
-      - Key Projects:
-        1. SensAI: AI career auditor/coach using Next.js 14, Google Gemini API, Prisma, and Neon PostgreSQL. Audit resumes & simulate interviews. Live: https://sensai-dun.vercel.app
-        2. VibeMate: Roommate recommender with weight compatibility matching and speech analysis. Google Developer Groups Hackathon Top 5. Code: https://github.com/akanshalakhina/VibeMate
-        3. WEBGEN: SaaS generating responsive landing pages in MERN stack with Stripe payments & click deployment.
-        4. StayHub: Travel Booking & Guest booking system backend with Node.js and MongoDB.
-        5. VeriRide: SECURE booking platform with video KYC (Next.js, Node.js, WebRTC).
-      - Contact: Email akanshalakhina2004@gmail.com, LinkedIn: https://www.linkedin.com/in/akansha2004/
-      
-      Guidelines:
-      - Keep responses short, recruiter-friendly, and to the point.
-      - If they ask to hire her, point them to her email akanshalakhina2004@gmail.com and LinkedIn.
-      - Do not make up facts. If you don't know, state it, or focus on what is listed above.
-    `;
+  const model = process.env.GEMINI_MODEL ?? "gemini-2.5-flash";
 
-    // Make request to Gemini 1.5 Flash endpoint
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          contents: [
-            {
-              role: "user",
-              parts: [
-                {
-                  text: `${systemInstruction}\n\nUser Question: ${message}`,
-                },
-              ],
-            },
-          ],
-          generationConfig: {
-            maxOutputTokens: 250,
-            temperature: 0.5,
-          },
-        }),
-      }
-    );
+  try {
+    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
+      body: JSON.stringify({
+        systemInstruction: { parts: [{ text: SYSTEM_PROMPT() }] },
+        contents: [
+          ...history.map((t) => ({ role: t.role === "ai" ? "model" : "user", parts: [{ text: t.text }] })),
+          { role: "user", parts: [{ text: message }] },
+        ],
+        generationConfig: { maxOutputTokens: 300, temperature: 0.4 },
+      }),
+      signal: AbortSignal.timeout(15_000),
+    });
 
-    if (!response.ok) {
-      throw new Error(`Gemini API returned status ${response.status}`);
-    }
-
-    const data = await response.json();
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "I'm sorry, I could not generate a response. Please ask me about Akansha's project stack, experience, or education!";
-
+    if (!res.ok) throw new Error(`Gemini returned ${res.status}`);
+    const data = await res.json();
+    const reply: string | undefined = data?.candidates?.[0]?.content?.parts
+      ?.map((p: { text?: string }) => p.text ?? "")
+      .join("")
+      .trim();
+    if (!reply) throw new Error("Empty reply");
     return NextResponse.json({ reply });
-  } catch (error) {
-    console.error("Gemini route error:", error);
-    return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
+  } catch (err) {
+    console.error("chat route:", err);
+    return NextResponse.json({ error: "Model unavailable." }, { status: 502 });
   }
 }

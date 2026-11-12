@@ -1,160 +1,98 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { internships, certifications, communityAndMentorship } from "@/data";
+import { motion, useScroll, useSpring } from "framer-motion";
+import { useRef } from "react";
+import { FiArrowUpRight } from "react-icons/fi";
 
-export const Experience = () => {
-  const [activeTab, setActiveTab] = useState<"internships" | "certifications" | "community">("internships");
+import { Eyebrow, Reveal, RevealText } from "@/components/ui/motion";
+import { experience, profile } from "@/data/portfolio";
 
-  const activeData =
-    activeTab === "internships"
-      ? internships
-      : activeTab === "certifications"
-      ? certifications
-      : communityAndMentorship;
+export function Experience() {
+  const listRef = useRef<HTMLOListElement>(null);
+  const { scrollYProgress } = useScroll({ target: listRef, offset: ["start 70%", "end 60%"] });
+  const scaleY = useSpring(scrollYProgress, { stiffness: 90, damping: 24 });
 
   return (
-    <section id="experience" className="py-20 max-w-5xl mx-auto px-4">
-      <h1 className="heading mb-8">
-        My <span className="text-purple">professional journey</span>
-      </h1>
-      <p className="text-center text-white-100 text-sm md:text-base max-w-xl mx-auto mb-12">
-        Click through tabs to explore my professional internships, academic certifications, and community mentorship involvements.
-      </p>
-
-      {/* Tabs Selector */}
-      <div className="flex flex-wrap justify-center gap-3 mb-16 max-w-xl mx-auto">
-        <button
-          onClick={() => setActiveTab("internships")}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all duration-300 ${
-            activeTab === "internships"
-              ? "bg-purple text-white border-purple shadow-lg shadow-purple/20"
-              : "bg-white/[0.02] border-white/5 text-white-200 hover:border-white/10 hover:text-white"
-          }`}
-        >
-          <span>💼</span> Internships
-        </button>
-        <button
-          onClick={() => setActiveTab("certifications")}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all duration-300 ${
-            activeTab === "certifications"
-              ? "bg-purple text-white border-purple shadow-lg shadow-purple/20"
-              : "bg-white/[0.02] border-white/5 text-white-200 hover:border-white/10 hover:text-white"
-          }`}
-        >
-          <span>📜</span> Certifications
-        </button>
-        <button
-          onClick={() => setActiveTab("community")}
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all duration-300 ${
-            activeTab === "community"
-              ? "bg-purple text-white border-purple shadow-lg shadow-purple/20"
-              : "bg-white/[0.02] border-white/5 text-white-200 hover:border-white/10 hover:text-white"
-          }`}
-        >
-          <span>🤝</span> Mentorship & Community
-        </button>
-      </div>
-
-      <div className="relative border-l border-white/10 md:border-l-0 md:flex md:flex-col md:items-center">
-        {/* Central timeline neon line on desktop */}
-        <div className="absolute left-[8px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-purple via-cyan-500 to-purple/20 md:-translate-x-1/2 hidden md:block" />
-
-        {/* Mobile vertical line */}
-        <div className="absolute left-[8px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-purple via-cyan-500 to-purple/20 md:hidden" />
-
-        <div className="space-y-12 w-full">
-          <AnimatePresence mode="popLayout">
-            {activeData.map((exp, idx) => {
-              const isEven = idx % 2 === 0;
-
-              return (
-                <motion.div
-                  key={`${activeTab}-${exp.id}`}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.3, delay: idx * 0.05 }}
-                  className={`relative flex flex-col md:flex-row items-start md:items-center w-full ${
-                    isEven ? "md:justify-start" : "md:justify-end"
-                  }`}
-                >
-                  {/* Timeline dot */}
-                  <div className="absolute left-[2px] md:left-1/2 top-1.5 md:top-1/2 h-[14px] w-[14px] rounded-full bg-black-100 border-2 border-purple shadow-lg shadow-purple/50 md:-translate-x-1/2 md:-translate-y-1/2 z-20 flex items-center justify-center">
-                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                  </div>
-
-                  {/* Content Card container */}
-                  <div
-                    className={`w-full pl-8 md:pl-0 md:w-[45%] ${
-                      isEven ? "md:text-right md:pr-8" : "md:text-left md:pl-8"
-                    }`}
-                  >
-                    <div className="relative group p-6 rounded-2xl border border-white/5 bg-black-100/40 backdrop-blur-md hover:border-purple/30 hover:shadow-xl hover:shadow-purple/5 transition-all duration-300">
-                      {/* Corner accent glow */}
-                      <div className="absolute top-0 right-0 h-10 w-10 bg-purple/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                      <div className={`flex flex-col ${isEven ? "md:items-end" : "md:items-start"} gap-3`}>
-                        {/* Image Thumbnail */}
-                        <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/5 p-2.5 border border-white/10">
-                          <Image
-                            width={40}
-                            height={40}
-                            src={exp.thumbnail}
-                            alt={exp.title}
-                            className="object-contain"
-                          />
-                        </div>
-
-                        <div className="w-full">
-                          <span className="text-[10px] font-bold uppercase tracking-widest text-cyan-400 bg-cyan-950/20 border border-cyan-800/30 px-2.5 py-1 rounded-full">
-                            {exp.period}
-                          </span>
-                          
-                          <h3 className="text-base sm:text-lg font-bold text-white mt-2 group-hover:text-purple transition-colors">
-                            {exp.title}
-                          </h3>
-                          
-                          <p className="text-xs sm:text-sm font-semibold text-purple mt-0.5">
-                            {exp.company}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* Bullet points description */}
-                      <ul className="mt-3.5 space-y-2 text-left">
-                        {exp.desc.map((bullet, bIdx) => (
-                          <li key={bIdx} className="text-xs sm:text-sm font-light text-white-200 leading-relaxed flex items-start gap-2">
-                            <span className="text-purple mt-1.5 h-1.5 w-1.5 rounded-full bg-purple flex-shrink-0" />
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      {/* Optional verify credential link */}
-                      {"link" in exp && exp.link && (
-                        <div className="mt-4 text-left">
-                          <a
-                            href={exp.link}
-                            target="_blank"
-                            rel="noreferrer noopener"
-                            className="inline-flex items-center gap-1.5 text-xs text-purple font-semibold hover:underline border border-purple/20 bg-purple/5 px-3 py-1.5 rounded-lg hover:bg-purple/10 transition-colors"
-                          >
-                            Verify Credential &rarr;
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
+    <section id="experience" className="relative py-28 sm:py-40">
+      <div className="container-x grid gap-14 lg:grid-cols-[0.85fr_1.6fr] lg:gap-20">
+        <div>
+          <div className="lg:sticky lg:top-28">
+            <Eyebrow index="03">Experience</Eyebrow>
+            <RevealText
+              text="Where I've *built.*"
+              className="mt-8 text-[clamp(2.6rem,6vw,5rem)] font-semibold leading-[0.92] tracking-[-0.05em]"
+            />
+            <Reveal delay={0.15}>
+              <p className="mt-6 max-w-sm text-[15px] leading-relaxed text-fg-2">
+                Four engineering roles while studying full-time — from React interfaces to owning entire AI systems
+                end to end.
+              </p>
+              <a
+                href={profile.resume}
+                target="_blank"
+                rel="noreferrer"
+                className="group mt-8 inline-flex items-center gap-2 border-b border-volt/50 pb-1 text-[14px] font-medium text-volt"
+              >
+                Full résumé
+                <FiArrowUpRight className="transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </a>
+            </Reveal>
+          </div>
         </div>
+
+        <ol ref={listRef} className="relative">
+          <span className="absolute bottom-2 left-[7px] top-2 w-px bg-line" aria-hidden />
+          <motion.span
+            className="absolute bottom-2 left-[7px] top-2 w-px origin-top bg-gradient-to-b from-volt via-iris to-aqua"
+            style={{ scaleY }}
+            aria-hidden
+          />
+          {experience.map((job, i) => (
+            <li key={job.company} className="relative pb-14 pl-12 last:pb-0">
+              <motion.span
+                className="absolute left-0 top-1.5 grid h-[15px] w-[15px] place-items-center rounded-full border border-white/20 bg-ink"
+                initial={{ scale: 0.6, borderColor: "rgba(255,255,255,0.2)" }}
+                whileInView={{ scale: 1, borderColor: "rgba(200,255,61,0.9)" }}
+                viewport={{ margin: "-40% 0px -40% 0px" }}
+                transition={{ duration: 0.4 }}
+                aria-hidden
+              >
+                <span className={`h-[5px] w-[5px] rounded-full ${job.current ? "animate-pulse-dot bg-volt" : "bg-white/40"}`} />
+              </motion.span>
+
+              <Reveal delay={i * 0.03}>
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] text-fg-3">
+                  <span>{job.period}</span>
+                  <span className="h-px w-4 bg-white/15" />
+                  <span>{job.place}</span>
+                  {job.current && (
+                    <span className="rounded-full border border-volt/30 bg-volt/10 px-2 py-0.5 text-volt">now</span>
+                  )}
+                </div>
+                <h3 className="mt-3 text-[clamp(1.6rem,3vw,2.4rem)] font-semibold leading-tight tracking-[-0.03em]">
+                  {job.company}
+                </h3>
+                <div className="mt-1 text-[15px] text-fg-2">{job.role}</div>
+                <ul className="mt-5 space-y-2.5">
+                  {job.points.map((p) => (
+                    <li key={p} className="flex gap-3 text-[15px] leading-relaxed text-fg-2">
+                      <span className="mt-[10px] h-px w-3 shrink-0 bg-volt/70" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-5 flex flex-wrap gap-1.5">
+                  {job.tags.map((t) => (
+                    <span key={t} className="chip">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </Reveal>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   );
-};
-
+}
